@@ -21,8 +21,9 @@
 **API explored so far**
     - We have started with ClimateSERV, you can access the documentation here: [ClimateSERV](https://readthedocs.org/projects/climateserv/downloads/pdf/latest/)
     - To access the ClimateSERV API use:
-        > conda install -c servir climateserv
-        > pip install climateserv
+        - conda install -c servir climateserv
+        or
+        - pip install climateserv
 
 **ClimateSERV Data Sources:**
     - Names for the data sources are complicated for both the developers and the end users. I have tried to translate them into easy-to-read terms. Please find the table attached:

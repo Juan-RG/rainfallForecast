@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container mt-5">
+    <h1 class="mb-4">Help & Support</h1>
+
+    <div id="faqAccordion">
+        <div class="card2">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        1. How do I access the datasets?
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                <div class="card-body">
+                    You can access the datasets by visiting the NASA Earth Data website and navigating to the specific data collections.
+                </div>
+            </div>
+        </div>
+
+        <div class="card2">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        2. What types of datasets are available?
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                <div class="card-body">
+                    Various datasets are available, including those related to precipitation, soil moisture, and vegetation growth.
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more questions and answers similarly -->
+    </div>
+</main>
+
+
+{% endblock %}

@@ -1,1 +1,86 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to AgriMen</h1>
+        <p class="lead">Empowering farmers with NASA Earth data for informed decisions.</p>
+        <a href="{% url 'dashboard' %}" class="btn btn-warning btn-lg">Get Started</a>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <!-- <img src="{% static 'frontend/img/farming.jpg' %}" class="card-img-top" alt="Farming"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Data Insights</h5>
+                    <p class="card-text">Explore insights on water-related challenges and solutions for farmers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <!-- <img src="{% static 'frontend/img/satellite.jpg' %}" class="card-img-top" alt="Satellite Data"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Earth Observation</h5>
+                    <p class="card-text">Utilize NASA's satellite data to enhance your farming practices.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <!-- <img src="{% static 'frontend/img/community.jpg' %}" class="card-img-top" alt="Community Support"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Community Engagement</h5>
+                    <p class="card-text">Connect with fellow farmers and experts for shared knowledge and support.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</main>
+
+<!-- About Us Section -->
+<section id="about-us" class="container mt-5">
+    <h2 class="text-center">About Us</h2>
+    <p class="lead text-center">
+        We are a team participating in the 2024 NASA Space Apps Challenge, dedicated to leveraging Earth observation data to empower farmers in making informed decisions. Our project focuses on utilizing NASA datasets to tackle water-related challenges, enhance agricultural practices, and improve food security.
+    </p>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Our Mission</h5>
+                    <p class="card-text">
+                        To connect farmers with critical data that helps them adapt to changing environmental conditions and optimize their agricultural practices for sustainable growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Our Vision</h5>
+                    <p class="card-text">
+                        To foster a resilient agricultural community empowered by real-time data insights that enhance decision-making and productivity.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Our Team</h5>
+                    <p class="card-text">
+                        A diverse group of passionate individuals committed to innovation in agriculture and dedicated to supporting farmers in overcoming challenges.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

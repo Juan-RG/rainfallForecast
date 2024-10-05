@@ -1,5 +1,9 @@
 body {
-    background-color: #f8f9fa; /* Light background */
+    /* background-color: #f8f9fa; Light background */
+    background-image: url('../img/agri.jpg');
+    background-size: cover; /* Cover the entire background */
+    background-attachment: fixed; /* Fixed background */
+    background-position: center; /* Center the image */
 }
 
 .input-group-text {
@@ -34,7 +38,43 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
 }
 
+.navbar {
+    padding: 1rem;
+}
 
+.card {
+    height: 250px; /* Set a fixed height (adjust as needed) */
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding: 15px; /* Optional: Add some padding */
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+}
+
+.card-header {
+    background-color: #fff;
+}
+
+.card-header .btn-link {
+    color: black;
+    font-weight: bold;
+}
+
+.card-header .btn-link:hover {
+    color: #6c757d; /* Optional: Change text color on hover */
+}
+
+.collapse {
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.collapse.show {
+    background-color: #f8f9fa; /* Background color for the expanded answer */
+}
+
+.card-body {
+    border-top: 1px solid #007bff; /* Optional: border at the top of the answer */
+}
+</style>
 
 html, body {
     height: 100%; /* Set the height of html and body to 100% */
@@ -42,7 +82,7 @@ html, body {
 }
 
 body {
-    overflow: hidden; /* Prevent scrollbars on the body */
+    overflow: auto; /* Prevent scrollbars on the body */
 }
 
 .container-fluid {
@@ -53,4 +93,46 @@ body {
 #map {
     width: 100%; /* Full width */
     height: 80%; /* Full height */
+}
+
+h1.display-4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    font-weight: bolder;
+    color: #3B9C4D;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+}
+
+h1.mb-4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.lead {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
 }

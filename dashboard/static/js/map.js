@@ -67,17 +67,17 @@ function initMap(latitude, longitude) {
         const characteristics = document.getElementById('characteristics').value;
 
         // Send the data to Django
-        sendDataToServer({data: 'Hello, Django!'});
-        /*
-        sendDataToServer({
-        minLat: minLat,
-        maxLat: maxLat,
-        minLng: minLng,
-        maxLng: maxLng,
-        location: location,
-        characteristics: characteristics
-        });
-        */
+        const data = {
+            minLat: minLat,
+            maxLat: maxLat,
+            minLng: minLng,
+            maxLng: maxLng,
+            location: location,
+            characteristics: characteristics
+        };
+        console.log(data)
+        sendDataToServer(data);
+        
      });
 }
 

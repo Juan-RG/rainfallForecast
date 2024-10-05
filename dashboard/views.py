@@ -1,4 +1,5 @@
 import requests, json
+import re
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
@@ -11,20 +12,60 @@ def dashboard(request):
 
     # Handle POST requests
     if request.method == 'POST':
+        print("aa")
         try:
+            print(request.body)
             data = json.loads(request.body)
-            message = data.get('data', None)  # Extract the 'data' field
-            print("Received data:", message)  # This will log to the console
-            
-            # You can process the data and prepare a response
-            response_data = {
-              'status': 'success',
-              'message': 'Data received successfully!',
-              'received_data': data  # Optional: Echo back the received data
+            # Define the API URL
+            #api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/?datatype=0&begintime=04/01/2018&endtime=04/30/2018&intervaltype=0&operationtype=5&callback=successCallback&dateType_Category=default&isZip_CurrentDataType=false&geometry={"type":"Polygon","coordinates":[[[21.533203124999996,-3.1624555302378496],[21.533203124999996,-6.489983332670647],[26.279296874999986,-5.441022303717986],[26.10351562499999,-2.635788574166625],[21.533203124999996,-3.1624555302378496]]]}'
+
+            # Define the data payload to send in the request
+            #params = {}
+            api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/'
+            geometry = {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [21.533203124999996, -3.1624555302378496],
+                        [21.533203124999996, -6.489983332670647],
+                        [26.279296874999986, -5.441022303717986],
+                        [26.10351562499999, -2.635788574166625],
+                        [21.533203124999996, -3.1624555302378496]
+                    ]
+                ]
+            }            
+            # Parameters to be added
+            params = {
+                'datatype': 0,
+                'begintime': '04/01/2018',
+                'endtime': '04/30/2018',
+                'intervaltype': 0,
+                'operationtype': 5,
+                'callback': 'successCallback',
+                'dateType_Category': 'default',
+                'isZip_CurrentDataType': 'false',
+                'geometry': json.dumps(geometry)
             }
+            response = requests.get(api_url, params=params)
+            response_text = response.text
+            print(response_text)
+            id = match = re.search(r'\["(.*?)"\]', response_text)
+            extracted_value = id.group(1)
+            print(extracted_value)                   
+            if response.status_code == 200:
+              response_data = {
+                  'status': 'success',
+                  'message': 'Request received!',
+                  'received_data': data  # Optional: Echo back the received data
+                }
+            else:
+                print(f"Request failed with status code {response.status_code}")
             return JsonResponse(response_data)  # Send back a JSON response
         except json.JSONDecodeError:
+            print("Entro2")
             return JsonResponse({"error": "Invalid JSON"}, status=400)
+
+
 ''''
 def dashboard(request):
   template = loader.get_template('dashboard.html')

@@ -4,53 +4,74 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <!-- CSS  -->
+        <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
         <!-- Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Map-->
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
-        <style>
-            #map {
-                height: 500px; /* Set height for the map */
-                width: 100%; /* Set width for the map */
-            }
-        </style>
+
     </head>
 <body>
-
-    <div class="container">
-        <h1 class="mt-4">Dashboard</h1>
-    </div>
-
+    <header></header>
+        <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-success">
+            <a href="/dashboard" class="navbar-brand">
+                <img src="{% static 'frontend/img/app_logo.png' %}" alt="Dashboard" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a aria-current="page" id="menu-home" class="nav-link" href="/dashboard" style="font-size: 1.5rem;">HOME</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
     <div class="container mt-5">
-        <h1>Query</h1>
-        <form id="locationForm">
-            <div class="form-group">
-                <label for="actualLocation">Location:</label>
-                <input type="text" id="actualLocation" class="form-control" placeholder="Current Location">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Location:</span>
+                    <input type="text" id="actualLocation" class="form-control" placeholder="Current Location">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="characteristics">Select Characteristics:</label>
-                <select id="characteristics" class="form-control">
-                    <option value="">Select...</option>
-                    <option value="rainfall">Rainfall</option>
-                    <option value="forest">.....</option>
-                </select>
+            <div class="col-auto">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Type:</span>
+                    <select id="characteristics" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="rainfall">Rainfall</option>
+                        <option value="forest">Forest</option>
+                    </select>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Query</button>
-        </form>
+            <div class="col-auto">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Date:</span>
+                    <input type="date" id="date" class="form-control">
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success">Query</button>
+            </div>
+        </div>
     </div>
 
 
-    <!-- Add a small margin at the bottom of the form -->
-    <div class="container mt-3">
-            <div id="map"></div>
+    <div class="container-fluid mt-3">
+        <div id="map"></div>
     </div>
 
-
+    <footer>
+        <!-- Your Footer Here -->
+    </footer>
+    
     <!-- JS for map -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <!-- Add Leaflet Draw JS -->

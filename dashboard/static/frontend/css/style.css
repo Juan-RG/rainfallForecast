@@ -1,0 +1,56 @@
+body {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.input-group-text {
+    background-color: #6c757d; /* Dark gray background */
+    color: white; /* White text for better contrast */
+}
+
+.form-control {
+    border-radius: 0.5rem; /* Rounded corners */
+    border: 1px solid #6c757d; /* Match the input group text */
+}
+
+.btn-success {
+    background-color: #28a745; /* Green button color */
+    border: none; /* Remove border */
+    transition: background-color 0.3s; /* Transition effect */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.input-group {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 0.5rem; /* Rounded corners for the input group */
+}
+
+.container {
+    background-color: #ffffff; /* White background for form */
+    padding: 20px; /* Padding around the container */
+    border-radius: 0.5rem; /* Rounded corners for the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+
+
+html, body {
+    height: 100%; /* Set the height of html and body to 100% */
+    margin: 10; /* Remove default margin */
+}
+
+body {
+    overflow: hidden; /* Prevent scrollbars on the body */
+}
+
+.container-fluid {
+    height: calc(100vh - 100px); /* Adjust height based on header/footer, change 100px to your header/footer total height */
+    padding: 10; /* Remove padding if necessary */
+}
+
+#map {
+    width: 100%; /* Full width */
+    height: 80%; /* Full height */
+}

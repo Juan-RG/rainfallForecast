@@ -7,6 +7,7 @@ function getUserLocation() {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
           getCityName(latitude, longitude);
+          initMap(latitude, longitude);
         },
         (error) => {
           document.getElementById("locationOutput").textContent = `Error getting location: ${error.message}`;

@@ -7,6 +7,16 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Map-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+        <style>
+            #map {
+                height: 500px; /* Set height for the map */
+                width: 100%; /* Set width for the map */
+            }
+        </style>
     </head>
 <body>
 
@@ -33,6 +43,20 @@
             <button type="submit" class="btn btn-primary">Query</button>
         </form>
     </div>
+
+
+    <!-- Add a small margin at the bottom of the form -->
+    <div class="container mt-3">
+            <div id="map"></div>
+    </div>
+
+
+    <!-- JS for map -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Add Leaflet Draw JS -->
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+    <!-- Include your map.js file -->
+    <script src="{% static 'js/map.js' %}"></script>
 
      <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

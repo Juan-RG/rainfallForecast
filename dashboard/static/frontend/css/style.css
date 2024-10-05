@@ -28,7 +28,7 @@ body {
 }
 
 .container {
-    background-color: #ffffff; /* White background for form */
+    background-color: #2ae76f; /* White background for form */
     padding: 20px; /* Padding around the container */
     border-radius: 0.5rem; /* Rounded corners for the container */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */

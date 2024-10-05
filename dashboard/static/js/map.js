@@ -95,6 +95,7 @@ function sendDataToServer(data) {
     .catch((error) => console.error('Error:', error));
  }
 
+
  function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -108,6 +109,7 @@ function sendDataToServer(data) {
             }
         }
     }
-    return cookieValue;   
+    return cookieValue; 
 
-}
+    
+}    

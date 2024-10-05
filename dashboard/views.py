@@ -21,15 +21,15 @@ def fetchingClimateSERV(request):
         # characteristics = data.get('characteristics')
 
         # Construct the ClimateSERV API request
-        api_url = 'https://climateserv.servirglobal.net/chirps/submitDataRequest/'
-        params = {
-            'datatype': 0,  # Assuming 'rainfall' for now: takes integer and 0 is for rainfall
-            'begintime': '2023-01-01',  # Example start date
-            'endtime': '2023-12-31',  # Example end date
-            'intervaltype': 0,  # Example interval type
-            'operationtype': 0,  # Example operation type
-            'geometry': f'POLYGON(({min_lng} {min_lat},{max_lng} {min_lat},{max_lng} {max_lat},{min_lng} {max_lat},{min_lng} {min_lat}))',
-        }
+        api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/?datatype=0&begintime=01/01/2023&endtime=12/30/2023&intervaltype=0&operationtype=5&callback=successCallback&dateType_Category=default&isZip_CurrentDataType=false&geometry={"type":"Polygon","coordinates":[[[min_lng,min_lat],[max_lng,min_lat],[max_lng,max_lat],[min_lng,max_lat],[min_lng,min_lat]]]}'
+        # params = {
+        #     'datatype': 0,  # Assuming 'rainfall' for now: takes integer and 0 is for rainfall
+        #     'begintime': '2023-01-01',  # Example start date
+        #     'endtime': '2023-12-31',  # Example end date
+        #     'intervaltype': 0,  # Example interval type
+        #     'operationtype': 0,  # Example operation type
+        #     'geometry': {"type":"Polygon","coordinates":[[[min_lng, min_lat], [max_lng, min_lat], [max_lng, max_lat], [min_lng, max_lat], [min_lng, min_lat]]]}
+        # }
 
         # Make the API request
         response = requests.get(api_url, params=params)

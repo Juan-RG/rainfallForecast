@@ -1,11 +1,60 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 <body>
 
-<h1>Dashboard</h1>
-<p>
-    Happy Birthday
-</p>
+    <div class="container">
+        <h1 class="mt-4">Dashboard</h1>
+    </div>
 
+
+    <div class="container mt-5">
+        <h1>Query</h1>
+        <form id="locationForm">
+            <div class="form-group">
+                <label for="actualLocation">Location:</label>
+                <input type="text" id="actualLocation" class="form-control" placeholder="Current Location">
+            </div>
+            <div class="form-group">
+                <label for="characteristics">Select Characteristics:</label>
+                <select id="characteristics" class="form-control">
+                    <option value="">Select...</option>
+                    <option value="rainfall">Rainfall</option>
+                    <option value="forest">.....</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Query</button>
+        </form>
+    </div>
+
+     <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--Import JS functions -->
+    <script src="{% static 'js/location.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            getUserLocation();
+            
+            // Handle form submission
+            document.getElementById('locationForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                const location = document.getElementById('actualLocation').value;
+                const characteristics = document.getElementById('characteristics').value;
+                
+                // Handle the query logic here
+                console.log(`Querying for Location: ${location}, Characteristics: ${characteristics}`);
+            });
+        });
+    </script>
 </body>
 </html>

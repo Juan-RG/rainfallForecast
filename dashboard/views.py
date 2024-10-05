@@ -2,14 +2,38 @@ import requests, json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
-from django.views.decorators.csrf import csrf_exempt
 
 def dashboard(request):
+    # Render the dashboard template for GET requests
+    if request.method == 'GET':
+        template = loader.get_template('dashboard.html')
+        return HttpResponse(template.render())
+
+    # Handle POST requests
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            message = data.get('data', None)  # Extract the 'data' field
+            print("Received data:", message)  # This will log to the console
+            
+            # You can process the data and prepare a response
+            response_data = {
+              'status': 'success',
+              'message': 'Data received successfully!',
+              'received_data': data  # Optional: Echo back the received data
+            }
+            return JsonResponse(response_data)  # Send back a JSON response
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+''''
+def dashboard(request):
   template = loader.get_template('dashboard.html')
+  print("Entro")
   return HttpResponse(template.render())
 
 @csrf_exempt
 def fetchingClimateSERV(request):
+  print("Entro2")
   if request.method == 'POST':
         data = json.loads(request.body)
         min_lat = data.get('minLat')
@@ -36,3 +60,4 @@ def fetchingClimateSERV(request):
 
         # Process the response and return the data
         return JsonResponse(response.json())
+'''

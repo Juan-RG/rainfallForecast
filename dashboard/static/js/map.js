@@ -67,6 +67,8 @@ function initMap(latitude, longitude) {
         const characteristics = document.getElementById('characteristics').value;
 
         // Send the data to Django
+        sendDataToServer({data: 'Hello, Django!'});
+        /*
         sendDataToServer({
         minLat: minLat,
         maxLat: maxLat,
@@ -75,9 +77,48 @@ function initMap(latitude, longitude) {
         location: location,
         characteristics: characteristics
         });
+        */
      });
 }
 
+// Function to get the CSRF token from cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Check if this cookie string begins with the desired name
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// Function to send data to the Django server
+async function sendDataToServer(data) {
+    try {
+        const response = await fetch('/dashboard/', {  // Ensure this URL matches your Django view
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',  // Send data as JSON
+                'X-CSRFToken': getCookie('csrftoken'), // Include the CSRF token
+            },
+            body: JSON.stringify(data), // Convert data object to JSON string
+        });
+        console.log('Success2:', data);
+        const responseData = await response.json(); // Parse the JSON response
+        console.log('Success:', responseData); // Log the response from the server
+        // You can handle the response here (e.g., show a message to the user)
+        alert(responseData.message);
+    } catch (error) {
+        console.error('Error:', error); // Log any errors
+    }
+}
+/*
 function sendDataToServer(data) {
     fetch('/dashboard/', { 
         method: 'POST',
@@ -113,3 +154,5 @@ function sendDataToServer(data) {
 
     
 }    
+
+*/

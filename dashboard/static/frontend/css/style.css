@@ -32,7 +32,7 @@ body {
 }
 
 .container {
-    background-color: #2ae76f; /* White background for form */
+    background-color: #5dea919e; /* White background for form */
     padding: 20px; /* Padding around the container */
     border-radius: 0.5rem; /* Rounded corners for the container */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
@@ -95,6 +95,7 @@ body {
     height: 80%; /* Full height */
 }
 
+/* Adjust existing styles */
 h1.display-4 {
     font-family: 'Montserrat', sans-serif;
     font-size: 4rem;
@@ -105,8 +106,6 @@ h1.display-4 {
     margin-top: 20px;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.8);
-    display: inline-block;
 }
 
 h1.mb-4 {
@@ -138,4 +137,82 @@ footer {
 }
 
 
+/* Add this to your CSS file */
+
+/* Hero Section */
+.hero-section {
+    background-image: url('{% static "frontend/img/agri.jpg" %}'); /* Path to your background image */
+    height: 100vh; /* Full height */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    position: relative; /* To position content */
+    overflow: hidden; /* Hide overflow */
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+    z-index: 1; /* Place the overlay behind the text */
+}
+
+.hero-content {
+    position: relative; /* Keep content above the overlay */
+    z-index: 2; /* Place content above overlay */
+}
+
+/* Header Links */
+.header-links {
+    position: absolute; /* Positioning relative to the hero section */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    z-index: 2; /* Ensure it appears above the overlay */
+}
+
+.header-links-d {
+    z-index: 2; /* Ensure it appears above the overlay */
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px; /* Add padding for spacing */
+    display: flex; /* Use flexbox */
+    justify-content: flex-end; /* Align items to the right */
+
+}
+
+.header-text {
+    /* position: absolute; */
+    left: 0;
+}
+
+.header-links a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    margin-left: 20px; /* Spacing between links */
+    font-size: 1rem; /* Font size */
+    transition: color 0.3s; /* Transition effect */
+}
+
+.header-links-d a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    margin-left: 20px; /* Spacing between links */
+    font-size: 1rem; /* Font size */
+    transition: color 0.3s; /* Transition effect */
+}
+
+.header-links a:hover {
+    color: #28a745; /* Change color on hover */
+}
+
+.header-links-d a:hover {
+    color: #28a745; /* Change color on hover */
+}
 

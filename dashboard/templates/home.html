@@ -2,44 +2,49 @@
 {% load static %}
 
 {% block content %}
-<main class="container mt-5">
-    <div class="text-center">
-        <h1 class="display-4">Welcome to AgriMen</h1>
-        <p class="lead">Empowering farmers with NASA Earth data for informed decisions.</p>
+<div class="header-links">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'help' %}">Help</a>
+</div>
+
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+    <div class="hero-content text-center">
+        <h1 class="display-4">AgriMen</h1>
+        <p class="lead">Leveraging Earth Observation Data for Informed Agricultural Decision-Making</p>
         <a href="{% url 'dashboard' %}" class="btn btn-warning btn-lg">Get Started</a>
     </div>
-    
+
+</section>
+
+<main class="container mt-5">
     <div class="row mt-5">
         <div class="col-md-4">
             <div class="card">
-                <!-- <img src="{% static 'frontend/img/farming.jpg' %}" class="card-img-top" alt="Farming"> -->
                 <div class="card-body">
-                    <h5 class="card-title">Data Insights</h5>
-                    <p class="card-text">Explore insights on water-related challenges and solutions for farmers.</p>
+                    <h5 class="card-title">Rainfall Predictions</h5>
+                    <p class="card-text">Get accurate rainfall predictions based on historical data to optimize your planting schedule.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
-                <!-- <img src="{% static 'frontend/img/satellite.jpg' %}" class="card-img-top" alt="Satellite Data"> -->
                 <div class="card-body">
-                    <h5 class="card-title">Earth Observation</h5>
-                    <p class="card-text">Utilize NASA's satellite data to enhance your farming practices.</p>
+                    <h5 class="card-title">Interactive Mapping</h5>
+                    <p class="card-text">Select your region on the map to visualize rainfall patterns and forecasts.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
-                <!-- <img src="{% static 'frontend/img/community.jpg' %}" class="card-img-top" alt="Community Support"> -->
                 <div class="card-body">
-                    <h5 class="card-title">Community Engagement</h5>
-                    <p class="card-text">Connect with fellow farmers and experts for shared knowledge and support.</p>
+                    <h5 class="card-title">Data-Driven Decisions</h5>
+                    <p class="card-text">Make informed decisions for your farming practices using reliable weather data.</p>
                 </div>
             </div>
         </div>
     </div>
-
-    
 </main>
 
 <!-- About Us Section -->
@@ -81,6 +86,4 @@
         </div>
     </div>
 </section>
-
-
 {% endblock %}

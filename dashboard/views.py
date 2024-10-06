@@ -20,24 +20,26 @@ def dashboard(request):
         try:
             print(request.body)
             data = json.loads(request.body)
+            min_lat = data.get('minLat')
+            max_lat = data.get('maxLat')
+            min_lng = data.get('minLng')
+            max_lng = data.get('maxLng')
+            location = data.get('location')
+            characteristics = data.get('characteristics')
             # Define the API URL
-            #api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/?datatype=0&begintime=04/01/2018&endtime=04/30/2018&intervaltype=0&operationtype=5&callback=successCallback&dateType_Category=default&isZip_CurrentDataType=false&geometry={"type":"Polygon","coordinates":[[[21.533203124999996,-3.1624555302378496],[21.533203124999996,-6.489983332670647],[26.279296874999986,-5.441022303717986],[26.10351562499999,-2.635788574166625],[21.533203124999996,-3.1624555302378496]]]}'
-
-            # Define the data payload to send in the request
-            #params = {}
             api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/'
+
+            coordinates = [
+                [min_lng, min_lat],  # Bottom-left corner
+                [min_lng, max_lat],  # Top-left corner
+                [max_lng, max_lat],  # Top-right corner
+                [max_lng, min_lat],  # Bottom-right corner
+                [min_lng, min_lat],  # Close the polygon by repeating the first point
+            ]
             geometry = {
                 "type": "Polygon",
-                "coordinates": [
-                    [
-                        [21.533203124999996, -3.1624555302378496],
-                        [21.533203124999996, -6.489983332670647],
-                        [26.279296874999986, -5.441022303717986],
-                        [26.10351562499999, -2.635788574166625],
-                        [21.533203124999996, -3.1624555302378496]
-                    ]
-                ]
-            }            
+                "coordinates": [coordinates]
+            }                        
             # Parameters to be added
             params = {
                 'datatype': 0,

@@ -5,8 +5,9 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 
 urlpatterns = [
+    path("", include('dashboard.urls')),
     path("admin/", admin.site.urls),
     path("home/", include("dashboard.urls")),
-    path("", RedirectView.as_view(url="dashboard/home/", permanent=True)),
+    # path("", RedirectView.as_view(url="dashboard/home/", permanent=True)),
     # path("accounts/", include("django.contrib.auth.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

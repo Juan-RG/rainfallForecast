@@ -2,44 +2,53 @@
 {% load static %}
 
 {% block content %}
-<main class="container mt-5">
-    <div class="text-center">
-        <h1 class="display-4">Welcome to AgriMen</h1>
-        <p class="lead">Empowering farmers with NASA Earth data for informed decisions.</p>
+<div class="header-links">
+    <a href="{% url 'home' %}" class="navbar-brand mr-4">
+        <img src="{% static 'frontend/img/app_logo.png' %}" alt="Dashboard" height="60">
+    </a>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'help' %}">Help</a>
+</div>
+
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+    <div class="hero-content text-center">
+        <h1 class="display-4">AgriMen</h1>
+        <p class="lead">Leveraging Earth Observation Data for Informed Agricultural Decision-Making</p>
         <a href="{% url 'dashboard' %}" class="btn btn-warning btn-lg">Get Started</a>
     </div>
-    
+
+</section>
+
+<main class="container mt-5">
+    <h2 class="text-center">Services</h2>
     <div class="row mt-5">
         <div class="col-md-4">
             <div class="card">
-                <!-- <img src="{% static 'frontend/img/farming.jpg' %}" class="card-img-top" alt="Farming"> -->
                 <div class="card-body">
-                    <h5 class="card-title">Data Insights</h5>
-                    <p class="card-text">Explore insights on water-related challenges and solutions for farmers.</p>
+                    <h5 class="card-title">Rainfall Predictions</h5>
+                    <p class="card-text">Get accurate rainfall predictions based on historical data to optimize your planting schedule.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
-                <!-- <img src="{% static 'frontend/img/satellite.jpg' %}" class="card-img-top" alt="Satellite Data"> -->
                 <div class="card-body">
-                    <h5 class="card-title">Earth Observation</h5>
-                    <p class="card-text">Utilize NASA's satellite data to enhance your farming practices.</p>
+                    <h5 class="card-title">Interactive Mapping</h5>
+                    <p class="card-text">Select your region on the map to visualize rainfall patterns and forecasts.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
-                <!-- <img src="{% static 'frontend/img/community.jpg' %}" class="card-img-top" alt="Community Support"> -->
                 <div class="card-body">
-                    <h5 class="card-title">Community Engagement</h5>
-                    <p class="card-text">Connect with fellow farmers and experts for shared knowledge and support.</p>
+                    <h5 class="card-title">Data-Driven Decisions</h5>
+                    <p class="card-text">Make informed decisions for your farming practices using reliable weather data.</p>
                 </div>
             </div>
         </div>
     </div>
-
-    
 </main>
 
 <!-- About Us Section -->
@@ -49,7 +58,7 @@
         We are a team participating in the 2024 NASA Space Apps Challenge, dedicated to leveraging Earth observation data to empower farmers in making informed decisions. Our project focuses on utilizing NASA datasets to tackle water-related challenges, enhance agricultural practices, and improve food security.
     </p>
     <div class="row mt-4">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Our Mission</h5>
@@ -59,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Our Vision</h5>
@@ -69,18 +78,45 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="image-card">
                 <div class="card-body">
-                    <h5 class="card-title">Our Team</h5>
-                    <p class="card-text">
-                        A diverse group of passionate individuals committed to innovation in agriculture and dedicated to supporting farmers in overcoming challenges.
-                    </p>
+                    <h2 class="text-center">Meet the Team</h2>
+                    <div class="row">
+
+                        <div class="col-md-4 text-center">
+                            <img src="{% static 'frontend/img/juan.jpeg' %}" alt="Juan Antonio Rodriguez" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                            <a href="https://www.linkedin.com/in/juan-antonio-rodriguez-gracia" target="_blank"><p class="mt-2">Juan Antonio Rodriguez</p></a>
+                        </div>
+
+                        <div class="col-md-4 text-center">
+                            <img src="{% static 'frontend/img/faizan.jpg' %}" alt="Faizan Abbas" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                            <a href="https://www.linkedin.com/in/faizan-abbas-b774a2217" target="_blank"><p class="mt-2">Faizan Abbas</p></a>
+                        </div>
+
+                        <div class="col-md-4 text-center">
+                            <img src="{% static 'frontend/img/shu.jpg' %}" alt="Shu Fan Sun" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                            <a href="mailto:s.sun.22@abdn.ac.uk"><p class="mt-2">Shu Fan Sun</p></a>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+
+                        <div class="col-md-6 text-center">
+                            <img src="{% static 'frontend/img/app_logo.png' %}" alt="Shamas Liaqat" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                            <p class="mt-2">Shamas Liaqat</p>
+                        </div>
+
+                        <div class="col-md-6 text-center">
+                            <img src="{% static 'frontend/img/app_logo.png' %}" alt="Mariam Saad" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                            <p class="mt-2">Mariam Saad</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-
+    </section>
 {% endblock %}

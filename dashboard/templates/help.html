@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="header-links-d">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'help' %}">Help</a>
+</div>
+
+
 <main class="container mt-5">
     <h1 class="mb-4">Help & Support</h1>
 
@@ -36,7 +43,7 @@
             </div>
         </div>
 
-        <!-- Add more questions and answers similarly -->
+
     </div>
 </main>
 

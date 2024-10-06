@@ -18,49 +18,74 @@ def dashboard(request):
     # Handle POST requests
     if request.method == 'POST':
         try:
+            ## ToDo: Answer the client and manage petitions in background asyncrous call
             data = json.loads(request.body)
-            api_url, params = createRequest(data)
-            response = requests.get(api_url, params=params)
-            if response.status_code == 200:
-                response_text = response.text
-                print(response_text)
-                id = match = re.search(r'\["(.*?)"\]', response_text)
-                extracted_value = id.group(1)
-                print(extracted_value)
-                avrg = waitResult(extracted_value)
-                response_data = {
-                    'status': 'success',
-                    'message': 'Request received!',
-                    'received_data': data  # Optional: Echo back the received data
-                }
-            else:
-                print(f"Request failed with status code {response.status_code}")
-            return JsonResponse(response_data)  # Send back a JSON response
-                   
-            return JsonResponse(response_data)  # Send back a JSON response
+            years = 2
+            params_list = createRequests(data,years)
+            # Print all parameter sets
+            response_list = []
+            for index, params in enumerate(params_list):
+                # Define the API URL
+                api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/'
+                response = requests.get(api_url, params=params)
+                if response.status_code == 200:
+                    response_text = response.text
+                    id = re.search(r'\["(.*?)"\]', response_text)
+                    extracted_value = id.group(1)
+                    print(extracted_value)
+                    response_list.append(extracted_value)  # Add the parameter set to the list
+                    #avrg = waitResult(extracted_value)
+
+                else:
+                    print(f"Request failed with status code {response.status_code}")
+                
+            
+            avrg_result = waitResult(response_list, years)
+            response_data = {
+                'status': 'success',
+                'message': 'Request received!',
+                'result': avrg_result  # Optional: Echo back the received data
+            }
+            #answer the client
+            return JsonResponse(response_data)  # Send back a JSON response                
         except json.JSONDecodeError:
-            print("Entro2")
             return JsonResponse({"error": "Invalid JSON"}, status=400)
-def waitResult(extracted_value):
+        
+def waitResult(extracted_value, years):
     api_url = 'https://climateserv.servirglobal.net/api/getDataRequestProgress/'
-    params = {
-        'id': extracted_value
-    }
-    progress = ""
-    while progress != "[100.0]":
-        progress = requests.get(api_url, params=params)
-        print(progress)
-        print(progress.text)
-        progress = progress.text
+    for index, params in enumerate(extracted_value):
+        params = {
+            'id': params
+        }
+        progress = ""
+        while progress != "[100.0]":
+            #Wait for the last petition
+            progress = requests.get(api_url, params=params)
+            print(progress.text)
+            progress = progress.text
 
-    api_url = 'http://climateserv.servirglobal.net/api/getDataFromRequest/'
-    response = requests.get(api_url, params=params)
-    print(response)
-    print(response.text)
+    avg_list = []        
+    for index, params in enumerate(extracted_value):
+        api_url = 'http://climateserv.servirglobal.net/api/getDataFromRequest/'
+        params = {
+            'id': params
+        }
+        response = requests.get(api_url, params=params)
+        # Extracting all the max values
+        data = json.loads(response.text)
+        avg_values = [item['value']['avg'] for item in data['data']]
+        average = sum(avg_values) / len(avg_values)
+        avg_list.append(average)
 
-    return response
+    if avg_list:
+        overall_average = sum(avg_list) / len(avg_list)
+        print(f"The overall average is: {overall_average}")
+    else:
+        print("The avg_list is empty. Cannot compute the overall average.")
 
-def createRequest(data):
+    return overall_average
+
+def createRequests(data, years):
     min_lat = data.get('minLat')
     max_lat = data.get('maxLat')
     min_lng = data.get('minLng')
@@ -74,15 +99,11 @@ def createRequest(data):
     date = date.replace(year=date.year - 1)
 
     # Calculate three days before and after
-    three_days_before = date - timedelta(days=30)
-    three_days_after = date + timedelta(days=30)
-    print(three_days_before)
-    print(three_days_after)
-    three_days_before = three_days_before.strftime("%m/%d/%Y")
-    three_days_after = three_days_after.strftime("%m/%d/%Y")
+    date_before = date - timedelta(days=4)
+    date_after = date + timedelta(days=4)
+    #three_days_before = three_days_before.strftime("%m/%d/%Y")
+    #three_days_after = three_days_after.strftime("%m/%d/%Y")
 
-            # Define the API URL
-    api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/'
 
     coordinates = [
                 [min_lng, min_lat],  # Bottom-left corner
@@ -95,20 +116,27 @@ def createRequest(data):
                 "type": "Polygon",
                 "coordinates": [coordinates]
             }                        
-            # Parameters to be added
-    params = {
-                'datatype': 0,
-                'begintime': three_days_before,
-                'endtime':  three_days_after,
-                'intervaltype': 0,
-                'operationtype': 5,
-                'callback': 'successCallback',
-                'dateType_Category': 'default',
-                'isZip_CurrentDataType': 'false',
-                'geometry': json.dumps(geometry)
-            }
+
+    # Initialize a list to hold all parameter sets
+    params_list = []
+
+    for i in range(years):
+        params = {
+            'datatype': 0,  # Example: different datatype for each set
+            'begintime': date_before.replace(year=date.year - i).strftime("%m/%d/%Y"),
+            'endtime': date_after.replace(year=date.year - i).strftime("%m/%d/%Y"),
+            'intervaltype': 0,
+            'operationtype': 5,
+            'callback': 'successCallback',
+            'dateType_Category': 'default',
+            'isZip_CurrentDataType': 'false',
+            'geometry': json.dumps(geometry)
+        }
+        
+        params_list.append(params)  # Add the parameter set to the list
+        
     
-    return api_url,params
+    return params_list
 
 
 ''''

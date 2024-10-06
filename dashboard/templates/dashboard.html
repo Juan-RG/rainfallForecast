@@ -58,6 +58,7 @@
     <!--Import JS functions -->
     <script src="{% static 'js/location.js' %}"></script>
     <script>
+        {% csrf_token %}
         document.addEventListener('DOMContentLoaded', function() {
             getUserLocation();
             

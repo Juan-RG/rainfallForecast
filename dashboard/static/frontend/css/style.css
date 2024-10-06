@@ -1,41 +1,41 @@
 body {
-    /* background-color: #f8f9fa; Light background */
+    
     background-image: url('../img/agri.jpg');
-    background-size: cover; /* Cover the entire background */
-    background-attachment: fixed; /* Fixed background */
-    background-position: center; /* Center the image */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 .input-group-text {
-    background-color: #6c757d; /* Dark gray background */
-    color: white; /* White text for better contrast */
+    background-color: #6c757d;
+    color: white;
 }
 
 .form-control {
-    border-radius: 0.5rem; /* Rounded corners */
-    border: 1px solid #6c757d; /* Match the input group text */
+    border-radius: 0.5rem;
+    border: 1px solid #6c757d;
 }
 
 .btn-success {
-    background-color: #28a745; /* Green button color */
-    border: none; /* Remove border */
-    transition: background-color 0.3s; /* Transition effect */
+    background-color: #28a745;
+    border: none;
+    transition: background-color 0.3s;
 }
 
 .btn-success:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #218838;
 }
 
 .input-group {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 0.5rem; /* Rounded corners for the input group */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
 }
 
 .container {
-    background-color: #5dea919e; /* White background for form */
-    padding: 20px; /* Padding around the container */
-    border-radius: 0.5rem; /* Rounded corners for the container */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    background-color: #5dea919e;
+    padding: 20px;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -43,16 +43,24 @@ body {
 }
 
 .card {
-    height: 250px; /* Set a fixed height (adjust as needed) */
-    overflow-y: auto; /* Allow vertical scrolling */
-    padding: 15px; /* Optional: Add some padding */
+    height: 250px;
+    overflow-y: auto;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px; 
+}
+
+.image-card {
+    height: 430px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px; 
 }
 
 .card-header {
     background-color: #fff;
 }
+
 
 .card-header .btn-link {
     color: black;
@@ -60,42 +68,42 @@ body {
 }
 
 .card-header .btn-link:hover {
-    color: #6c757d; /* Optional: Change text color on hover */
+    color: #6c757d;
 }
 
 .collapse {
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    transition: background-color 0.3s ease;
 }
 
 .collapse.show {
-    background-color: #f8f9fa; /* Background color for the expanded answer */
+    background-color: #f8f9fa;
 }
 
 .card-body {
-    border-top: 1px solid #007bff; /* Optional: border at the top of the answer */
+    border-top: 1px solid #007bff;
+    background-color: #fff;
 }
-</style>
 
 html, body {
-    height: 100%; /* Set the height of html and body to 100% */
-    margin: 10; /* Remove default margin */
+    height: 100%;
+    margin: 10;
 }
 
 body {
-    overflow: auto; /* Prevent scrollbars on the body */
+    overflow: auto;
 }
 
 .container-fluid {
-    height: calc(100vh - 100px); /* Adjust height based on header/footer, change 100px to your header/footer total height */
-    padding: 10; /* Remove padding if necessary */
+    height: calc(100vh - 100px);
+    padding: 10;
 }
 
 #map {
-    width: 100%; /* Full width */
-    height: 80%; /* Full height */
+    width: 100%;
+    height: 80%;
 }
 
-/* Adjust existing styles */
+
 h1.display-4 {
     font-family: 'Montserrat', sans-serif;
     font-size: 4rem;
@@ -136,22 +144,18 @@ footer {
     color: white;
 }
 
-
-/* Add this to your CSS file */
-
-/* Hero Section */
 .hero-section {
-    background-image: url('{% static "frontend/img/agri.jpg" %}'); /* Path to your background image */
-    height: 100vh; /* Full height */
-    background-size: cover; /* Cover the entire area */
-    background-position: center; /* Center the image */
-    display: flex; /* Flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    color: white; /* Text color */
-    text-align: center; /* Center text */
-    position: relative; /* To position content */
-    overflow: hidden; /* Hide overflow */
+    background-image: url('{% static "frontend/img/agri.jpg" %}');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-section::before {
@@ -161,58 +165,57 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
-    z-index: 1; /* Place the overlay behind the text */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .hero-content {
-    position: relative; /* Keep content above the overlay */
-    z-index: 2; /* Place content above overlay */
+    position: relative;
+    z-index: 2;
 }
 
-/* Header Links */
 .header-links {
-    position: absolute; /* Positioning relative to the hero section */
-    top: 20px; /* Distance from the top */
-    right: 20px; /* Distance from the right */
-    z-index: 2; /* Ensure it appears above the overlay */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
 }
 
 .header-links-d {
-    z-index: 2; /* Ensure it appears above the overlay */
+    z-index: 2;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px; /* Add padding for spacing */
-    display: flex; /* Use flexbox */
-    justify-content: flex-end; /* Align items to the right */
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
 
 }
 
 .header-text {
-    /* position: absolute; */
+    
     left: 0;
 }
 
 .header-links a {
-    color: white; /* Link color */
-    text-decoration: none; /* Remove underline */
-    margin-left: 20px; /* Spacing between links */
-    font-size: 1rem; /* Font size */
-    transition: color 0.3s; /* Transition effect */
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1rem;
+    transition: color 0.3s;
 }
 
 .header-links-d a {
-    color: white; /* Link color */
-    text-decoration: none; /* Remove underline */
-    margin-left: 20px; /* Spacing between links */
-    font-size: 1rem; /* Font size */
-    transition: color 0.3s; /* Transition effect */
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1rem;
+    transition: color 0.3s;
 }
 
 .header-links a:hover {
-    color: #28a745; /* Change color on hover */
+    color: #28a745;
 }
 
 .header-links-d a:hover {
-    color: #28a745; /* Change color on hover */
+    color: #28a745;
 }
 

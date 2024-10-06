@@ -65,7 +65,7 @@ function initMap(latitude, longitude) {
         // or use point sample for location
         const location = document.getElementById('actualLocation').value;
         const characteristics = document.getElementById('characteristics').value;
-
+        const date = document.getElementById('date').value;
         // Send the data to Django
         const data = {
             minLat: minLat,
@@ -73,7 +73,8 @@ function initMap(latitude, longitude) {
             minLng: minLng,
             maxLng: maxLng,
             location: location,
-            characteristics: characteristics
+            characteristics: characteristics,
+            date: date
         };
         console.log(data)
         sendDataToServer(data);

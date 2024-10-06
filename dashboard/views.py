@@ -1,5 +1,6 @@
 import requests, json
 import re
+from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
@@ -26,6 +27,15 @@ def dashboard(request):
             max_lng = data.get('maxLng')
             location = data.get('location')
             characteristics = data.get('characteristics')
+            date = data.get('date')
+            date = datetime.strptime(date, "%Y-%m-%d")
+
+
+            three_days_before = date - timedelta(days=3)
+            three_days_after = date + timedelta(days=3)
+            three_days_before = three_days_before.strftime("%m/%d/%Y")
+            three_days_after = three_days_after.strftime("%m/%d/%Y")
+
             # Define the API URL
             api_url = 'https://climateserv.servirglobal.net/api/submitDataRequest/'
 
@@ -43,8 +53,8 @@ def dashboard(request):
             # Parameters to be added
             params = {
                 'datatype': 0,
-                'begintime': '04/01/2018',
-                'endtime': '04/30/2018',
+                'begintime': three_days_before,
+                'endtime':  three_days_before,
                 'intervaltype': 0,
                 'operationtype': 5,
                 'callback': 'successCallback',

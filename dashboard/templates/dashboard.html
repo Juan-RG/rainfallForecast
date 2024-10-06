@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-success">Query</button>
+                <button type="submit"  id="buttonQuery"  class="btn btn-success">Query</button>
             </div>
         </div>
     </div>
@@ -61,16 +61,21 @@
         {% csrf_token %}
         document.addEventListener('DOMContentLoaded', function() {
             getUserLocation();
-            
             // Handle form submission
-            document.getElementById('locationForm').addEventListener('submit', function(event) {
+            document.getElementById('buttonQuery').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent default form submission
                 const location = document.getElementById('actualLocation').value;
                 const characteristics = document.getElementById('characteristics').value;
-                
                 // Handle the query logic here
                 console.log(`Querying for Location: ${location}, Characteristics: ${characteristics}`);
             });
+        });
+
+        //Put the actual date
+        document.addEventListener("DOMContentLoaded", function() {
+            const dateInput = document.getElementById("date");
+            const today = new Date().toISOString().split('T')[0]; // Get the current date in YYYY-MM-DD format
+            dateInput.value = today; // Set the value of the date input to today
         });
     </script>
 {% endblock content %}

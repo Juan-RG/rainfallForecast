@@ -65,7 +65,7 @@ function initMap(latitude, longitude) {
         // Should be useful later when we implement function to let user choose datatype,
         // or use point sample for location
         const location = document.getElementById('actualLocation').value;
-        const characteristics = document.getElementById('characteristics').value;
+        //const characteristics = document.getElementById('characteristics').value;
         const date = document.getElementById('date').value;
         // Send the data to Django
         const data = {
@@ -74,7 +74,7 @@ function initMap(latitude, longitude) {
             minLng: minLng,
             maxLng: maxLng,
             location: location,
-            characteristics: characteristics,
+            characteristics: '',
             date: date
         };
         console.log(data)

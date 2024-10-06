@@ -13,11 +13,11 @@ function initMap(latitude, longitude) {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
     }).addTo(map);
-
+/*
     L.marker([51.5, -0.09]).addTo(map).bindPopup('I am a Type 1 marker!').setStyle({ color: '#ff0000' });
     L.marker([51.51, -0.1]).addTo(map).bindPopup('I am a Type 2 marker!').setStyle({ color: '#00ff00' });
     L.marker([51.49, -0.08]).addTo(map).bindPopup('I am a Type 3 marker!').setStyle({ color: '#0000ff' });
-
+*/
 
     // Add a marker at the given latitude and longitude
     const marker = L.marker([latitude, longitude]).addTo(map);

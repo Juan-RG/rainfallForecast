@@ -14,6 +14,11 @@ function initMap(latitude, longitude) {
         maxZoom: 19,
     }).addTo(map);
 
+    L.marker([51.5, -0.09]).addTo(map).bindPopup('I am a Type 1 marker!').setStyle({ color: '#ff0000' });
+    L.marker([51.51, -0.1]).addTo(map).bindPopup('I am a Type 2 marker!').setStyle({ color: '#00ff00' });
+    L.marker([51.49, -0.08]).addTo(map).bindPopup('I am a Type 3 marker!').setStyle({ color: '#0000ff' });
+
+
     // Add a marker at the given latitude and longitude
     const marker = L.marker([latitude, longitude]).addTo(map);
     marker.bindPopup('You are here!').openPopup();
@@ -110,7 +115,7 @@ async function sendDataToServer(data) {
             },
             body: JSON.stringify(data), // Convert data object to JSON string
         });
-        console.log('Success2:', data);
+
         const responseData = await response.json(); // Parse the JSON response
         console.log('Success:', responseData); // Log the response from the server
         // You can handle the response here (e.g., show a message to the user)

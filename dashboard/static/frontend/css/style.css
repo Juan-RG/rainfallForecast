@@ -136,3 +136,20 @@ footer {
     background-color: #333;
     color: white;
 }
+
+
+
+
+
+#legend {
+    background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure the legend appears above the map */
+}
+
+#legend h4 {
+    margin: 0 0 5px;
+    font-size: 16px;
+}

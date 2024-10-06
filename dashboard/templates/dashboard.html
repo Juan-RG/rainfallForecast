@@ -9,6 +9,18 @@
         <a href="{% url 'help' %}">Help</a>
     </div>
 
+    <!-- Instructions Section -->
+    <div class="container mt-4">
+        <div class="instructions-box p-4 text-center">
+            <h2 class="instructions-title"><strong>How to Use the Forecast Tool</strong></h2>
+            <p class="instructions-text" style="color: white; font-size: large;"><strong>
+                To use this tool, first select a date for which you want the rainfall forecast. 
+                Then, choose an area on the map where you want the forecast. 
+                Once you have selected both, please wait a few seconds while we generate your forecast.
+            </strong></p>
+        </div>
+    </div>
+
     <div class="container mt-5">
         <div class="row align-items-center">
             <div class="col-auto">
@@ -43,6 +55,21 @@
   
     <div class="container-fluid mt-3">
         <div id="map"></div>
+        <div id="map-legend" class="legend">
+            <h4>Rainfall Probability</h4>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #ff0000;"></span>
+                High Probability
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #ffff00;"></span>
+                Medium Probability
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #00ff00;"></span>
+                Low Probability
+            </div>
+        </div>
     </div>
 
     

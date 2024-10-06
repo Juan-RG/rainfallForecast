@@ -142,6 +142,7 @@ footer {
     padding: 1rem;
     background-color: #333;
     color: white;
+    text-align: center;
 }
 
 .hero-section {
@@ -219,3 +220,34 @@ footer {
     color: #28a745;
 }
 
+.legend {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    color: #333;
+    margin: 20px 0; /* Add some margin to separate it from the map */
+}
+
+.legend h4 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}

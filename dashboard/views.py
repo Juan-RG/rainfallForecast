@@ -4,6 +4,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 
+def home(request):
+  template = loader.get_template('home.html')
+  return HttpResponse(template.render())
+
 def dashboard(request):
     # Render the dashboard template for GET requests
     if request.method == 'GET':
@@ -71,7 +75,6 @@ def dashboard(request):
   template = loader.get_template('dashboard.html')
   print("Entro")
   return HttpResponse(template.render())
-
 @csrf_exempt
 def fetchingClimateSERV(request):
   print("Entro2")
@@ -102,3 +105,9 @@ def fetchingClimateSERV(request):
         # Process the response and return the data
         return JsonResponse(response.json())
 '''
+
+def help(request):
+  template = loader.get_template('help.html')
+  return HttpResponse(template.render())
+
+

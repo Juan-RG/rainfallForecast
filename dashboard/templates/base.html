@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- CSS  -->
+        <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+
+        <!-- Map-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+
+    </head>
+<body>
+    <header>
+        <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-success">
+            <a href="{% url 'home' %}" class="navbar-brand mr-4">
+                <img src="{% static 'frontend/img/app_logo.png' %}" alt="Dashboard" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a aria-current="page" id="menu-home" class="nav-link" href="{% url 'home' %}" style="font-size: 1.5rem;">HOME</a>
+                    </li>
+                    <li class="nav-item"></li>
+                        <a aria-current="page" id="menu-dashboard" class="nav-link" href="{% url 'dashboard' %}" style="font-size: 1.5rem;">DASHBOARD</a>
+                    </li>
+                    <li class="nav-item"></li>
+                        <a aria-current="page" id="menu-help" class="nav-link" href="{% url 'help' %}" style="font-size: 1.5rem;">HELP</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+    <footer class="mt-5 text-center">
+        <p>© 2024 AgriMen. All rights reserved.</p>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

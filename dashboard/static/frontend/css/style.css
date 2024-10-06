@@ -1,0 +1,138 @@
+body {
+    /* background-color: #f8f9fa; Light background */
+    background-image: url('../img/agri.jpg');
+    background-size: cover; /* Cover the entire background */
+    background-attachment: fixed; /* Fixed background */
+    background-position: center; /* Center the image */
+}
+
+.input-group-text {
+    background-color: #6c757d; /* Dark gray background */
+    color: white; /* White text for better contrast */
+}
+
+.form-control {
+    border-radius: 0.5rem; /* Rounded corners */
+    border: 1px solid #6c757d; /* Match the input group text */
+}
+
+.btn-success {
+    background-color: #28a745; /* Green button color */
+    border: none; /* Remove border */
+    transition: background-color 0.3s; /* Transition effect */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.input-group {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 0.5rem; /* Rounded corners for the input group */
+}
+
+.container {
+    background-color: #2ae76f; /* White background for form */
+    padding: 20px; /* Padding around the container */
+    border-radius: 0.5rem; /* Rounded corners for the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.navbar {
+    padding: 1rem;
+}
+
+.card {
+    height: 250px; /* Set a fixed height (adjust as needed) */
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding: 15px; /* Optional: Add some padding */
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+}
+
+.card-header {
+    background-color: #fff;
+}
+
+.card-header .btn-link {
+    color: black;
+    font-weight: bold;
+}
+
+.card-header .btn-link:hover {
+    color: #6c757d; /* Optional: Change text color on hover */
+}
+
+.collapse {
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.collapse.show {
+    background-color: #f8f9fa; /* Background color for the expanded answer */
+}
+
+.card-body {
+    border-top: 1px solid #007bff; /* Optional: border at the top of the answer */
+}
+</style>
+
+html, body {
+    height: 100%; /* Set the height of html and body to 100% */
+    margin: 10; /* Remove default margin */
+}
+
+body {
+    overflow: auto; /* Prevent scrollbars on the body */
+}
+
+.container-fluid {
+    height: calc(100vh - 100px); /* Adjust height based on header/footer, change 100px to your header/footer total height */
+    padding: 10; /* Remove padding if necessary */
+}
+
+#map {
+    width: 100%; /* Full width */
+    height: 80%; /* Full height */
+}
+
+h1.display-4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    font-weight: bolder;
+    color: #3B9C4D;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+}
+
+h1.mb-4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.lead {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+}

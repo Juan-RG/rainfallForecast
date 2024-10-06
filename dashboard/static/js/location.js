@@ -18,20 +18,24 @@ function getUserLocation() {
     }
   }
 
-  function getCityName(latitude, longitude) {
+  async function getCityName(latitude, longitude) {
+    const cachedCity = localStorage.getItem("userCity");
+    if (cachedCity) {
+      document.getElementById("actualLocation").value = cachedCity;
+      return;
+    }
+  
     const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const city = data.address.city || data.address.town || data.address.village;
-        //Set the form value in to the actual position
-        const locationInput = document.getElementById("actualLocation").value = city;
-        locationInput.value = city; 
-      })
-      .catch((error) => {
-        const locationInput = document.getElementById("actualLocation").value = `Error getting city name: ${error.message}`;
-      });
+    try {
+      document.getElementById("actualLocation").value = "Loading location...";
+      const response = await fetch(url);
+      const data = await response.json();
+      const city = data.address.city || data.address.town || data.address.village;
+      document.getElementById("actualLocation").value = city;
+      localStorage.setItem("userCity", city); // Cache the city
+    } catch (error) {
+      document.getElementById("actualLocation").value = `Error: ${error.message}`;
+    }
   }
-
   window.onload = getUserLocation;
+

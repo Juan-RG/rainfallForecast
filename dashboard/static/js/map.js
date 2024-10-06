@@ -1,4 +1,5 @@
 let map; // Declare the map variable globally
+let lastDrawnLayer = null; // Variable to hold the last drawn shape
 
 function initMap(latitude, longitude) {
 
@@ -13,11 +14,7 @@ function initMap(latitude, longitude) {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
     }).addTo(map);
-/*
-    L.marker([51.5, -0.09]).addTo(map).bindPopup('I am a Type 1 marker!').setStyle({ color: '#ff0000' });
-    L.marker([51.51, -0.1]).addTo(map).bindPopup('I am a Type 2 marker!').setStyle({ color: '#00ff00' });
-    L.marker([51.49, -0.08]).addTo(map).bindPopup('I am a Type 3 marker!').setStyle({ color: '#0000ff' });
-*/
+
 
     // Add a marker at the given latitude and longitude
     const marker = L.marker([latitude, longitude]).addTo(map);
@@ -26,7 +23,6 @@ function initMap(latitude, longitude) {
      // Set up Leaflet Draw
      const drawnItems = new L.FeatureGroup();
      map.addLayer(drawnItems);
- 
      const drawControl = new L.Control.Draw({
          edit: {
              featureGroup: drawnItems // Enable editing of the drawn items
@@ -51,7 +47,7 @@ function initMap(latitude, longitude) {
      map.on(L.Draw.Event.CREATED, function (event) {
          const layer = event.layer;
          drawnItems.addLayer(layer); // Add the drawn layer to the FeatureGroup
- 
+         lastDrawnLayer = layer; // Store the last drawn layer
         // Get the coordinates of the drawn polygon
         // Get the outer ring of the polygon
         const coords = layer.getLatLngs()[0];
@@ -118,11 +114,65 @@ async function sendDataToServer(data) {
 
         const responseData = await response.json(); // Parse the JSON response
         console.log('Success:', responseData); // Log the response from the server
-        // You can handle the response here (e.g., show a message to the user)
-        alert(responseData.message);
+        modifyMap(responseData)
     } catch (error) {
         console.error('Error:', error); // Log any errors
     }
+}
+
+// Function to get the CSRF token from cookies
+function modifyMap(responseData) {
+    newColor = ''
+    labelText = ""
+    
+    if (responseData.result < 1){
+        newColor = '#00ff00'
+        labelText = "Low probability"
+    } else if (responseData.result < 2){
+        newColor = '#ffff00'
+        labelText = "Average probability"
+    }else{
+        newColor = '#ff0000'
+        labelText = "High probability"
+    }
+
+    if (lastDrawnLayer) {
+        // Change the color of the last drawn layer
+        lastDrawnLayer.setStyle({ color: newColor });
+
+        // Calculate the center of the polygon for placing the label
+        const latLngs = lastDrawnLayer.getLatLngs()[0];
+        const center = getPolygonCenter(latLngs);
+        // Create a custom div icon for the label
+        const labelIcon = L.divIcon({
+            className: 'text-label', // Custom class for styling
+            html: '<div style="color: black; font-weight: bold;">' + labelText + '</div>', // Your text
+            iconSize: [100, 40], // Adjust the size as needed
+            iconAnchor: [50, 20] // Center the icon on the label position
+        });
+
+        // Create a marker with the custom icon at the polygon center
+        L.marker(center, { icon: labelIcon }).addTo(map);
+        /*
+        // Create a marker with the label
+        const labelMarker = L.marker(center).addTo(map);
+        labelMarker.bindPopup(labelText).openPopup(); // Add a popup with the text
+*/
+    } else {
+        console.log("No shape has been drawn yet.");
+    }
+}
+
+// Function to calculate the centroid of a polygon
+function getPolygonCenter(latLngs) {
+    let latSum = 0, lngSum = 0;
+
+    latLngs.forEach(latLng => {
+        latSum += latLng.lat;
+        lngSum += latLng.lng;
+    });
+
+    return L.latLng(latSum / latLngs.length, lngSum / latLngs.length);
 }
 /*
 function sendDataToServer(data) {

@@ -99,8 +99,8 @@ def createRequests(data, years):
     date = date.replace(year=date.year - 1)
 
     # Calculate three days before and after
-    date_before = date - timedelta(days=4)
-    date_after = date + timedelta(days=4)
+    date_before = date - timedelta(days=2)
+    date_after = date + timedelta(days=2)
     #three_days_before = three_days_before.strftime("%m/%d/%Y")
     #three_days_after = three_days_after.strftime("%m/%d/%Y")
 

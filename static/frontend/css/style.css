@@ -1,9 +1,11 @@
 body {
-    
     background-image: url('../img/agri.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    overflow: auto;
+    height: 100%;
+    margin: 10;
 }
 
 .input-group-text {
@@ -11,28 +13,25 @@ body {
     color: white;
 }
 
-.form-control {
-    border-radius: 0.5rem;
-    border: 1px solid #6c757d;
-}
-
-.btn-success {
-    background-color: #28a745;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.btn-success:hover {
-    background-color: #218838;
-}
-
 .input-group {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
 }
 
+.form-control {
+    border-radius: 0.5rem;
+    border: 1px solid #6c757d;
+}
+
 .container {
-    background-color: #5dea919e;
+    background-color: none;
+    padding: 20px;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container-dashboard {
+    background-color: #28a745;
     padding: 20px;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -80,17 +79,13 @@ body {
 }
 
 .card-body {
-    border-top: 1px solid #007bff;
     background-color: #fff;
+    text-align: center;
 }
 
-html, body {
+html {
     height: 100%;
     margin: 10;
-}
-
-body {
-    overflow: auto;
 }
 
 .container-fluid {
@@ -135,6 +130,9 @@ h1.mb-4 {
     padding: 10px 20px;
 }
 
+h2.text-center {
+    color: green; /* Change the color to green */
+}
 
 
 footer {
@@ -146,7 +144,7 @@ footer {
 }
 
 .hero-section {
-    background-image: url('{% static "frontend/img/agri.jpg" %}');
+    
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -192,7 +190,6 @@ footer {
 }
 
 .header-text {
-    
     left: 0;
 }
 
@@ -250,4 +247,11 @@ footer {
     margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+}
+
+.container-blur {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    backdrop-filter: blur(10px); /* Apply blur to the background */
+    padding: 20px; /* Optional: add padding for a better look */
+    border-radius: 10px; /* Optional: round the corners */
 }

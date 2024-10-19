@@ -2,7 +2,27 @@
 {% load static %}
 
 {% block content %}
-
+    <head>
+        <style>
+            #map-legend {
+                background: rgba(255, 255, 255, 0.8);
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 14px;
+                display: none; /* Hide the legend initially */
+            }
+            .legend-item {
+                display: flex;
+                align-items: center;
+            }
+            .legend-color {
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                border: 1px solid #000;
+            }
+        </style>
+    </head>
     <div class="header-links-d">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'dashboard' %}">Dashboard</a>
@@ -10,9 +30,8 @@
     </div>
 
     <!-- Instructions Section -->
-    <div class="container mt-4">
         <div class="instructions-box p-4 text-center">
-            <h2 class="instructions-title"><strong>How to Use the Forecast Tool</strong></h2>
+            <h2 class="text-center "><strong>How to Use the Forecast Tool</strong></h2>
             <p class="instructions-text" style="color: white; font-size: large;"><strong>
                 To use this tool, first select a date for which you want the rainfall forecast. 
                 Then, choose an area on the map where you want the forecast. 
@@ -21,57 +40,26 @@
         </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-5 container-blur d-flex justify-content-center align-items-center">
         <div class="row align-items-center">
             <div class="col-auto">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Location:</span>
                     <input type="text" id="actualLocation" class="form-control" placeholder="Current Location">
                 </div>
-            </div>
-<!--          
-            <div class="col-auto">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Type:</span>
-                    <select id="characteristics" class="form-select">
-                        <option value="">Select...</option>
-                        <option value="rainfall">Rainfall</option>
-                        <option value="forest">Forest</option>
-                    </select>
-                </div>
-            </div>
--->            
+            </div>       
             <div class="col-auto">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Date:</span>
                     <input type="date" id="date" class="form-control">
                 </div>
             </div>
-            <div class="col-auto">
-                <button type="submit"  id="buttonQuery"  class="btn btn-success" hidden>Query</button>
-            </div>
-        </div>
-    </div>
-  
-    <div class="container-fluid mt-3">
-        <div id="map"></div>
-        <div id="map-legend" class="legend">
-            <h4>Rainfall Probability</h4>
-            <div class="legend-item">
-                <span class="legend-color" style="background-color: #ff0000;"></span>
-                High Probability
-            </div>
-            <div class="legend-item">
-                <span class="legend-color" style="background-color: #ffff00;"></span>
-                Medium Probability
-            </div>
-            <div class="legend-item">
-                <span class="legend-color" style="background-color: #00ff00;"></span>
-                Low Probability
-            </div>
         </div>
     </div>
 
+    <div class="container-fluid mt-3">
+        <div id="map"></div>
+    </div>
     
     <!-- JS for map -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -91,13 +79,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             getUserLocation();
             // Handle form submission
-            document.getElementById('buttonQuery').addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default form submission
-                const location = document.getElementById('actualLocation').value;
-                //const characteristics = document.getElementById('characteristics').value;
-                // Handle the query logic here
-                console.log(`Querying for Location: ${location}`);
-            });
         });
 
         //Put the actual date

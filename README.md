@@ -2,7 +2,7 @@
 
 ## Leveraging Earth Observation Data for Informed Agricultural Decision-Making
 
-InformedAgriculture is a Django-based web application designed to empower farmers and agricultural experts with insightful, real-time data. By utilizing Earth observation data, the platform helps users make better decisions for crop management, resource allocation, and land monitoring.
+RainfallForecast is a Django-based web application designed to empower farmers and agricultural experts with insightful, real-time data. By utilizing Earth observation data, the platform helps users make better decisions for crop management, resource allocation, and land monitoring.
 
 ### Installation Guide
 
@@ -18,7 +18,7 @@ Follow these steps to set up the project:
    git clone <repository-link>
 
 
-## Agri Men
+## RainfallForecast
 
 ### High-Level Summary
 
